@@ -15,7 +15,7 @@ let html2md = function(html, options) {
 	html = minify(html, {collapseWhitespace: true});
 
 	// build up the dom with cheerio
-	const $ = cheerio.load(html);
+	const $ = cheerio.load(html, { decodeEntities: true });
 
 	// select all elements inside the body and reverse
 	// them in thier order. This nifty trick will give

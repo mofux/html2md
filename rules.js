@@ -23,6 +23,9 @@ module.exports = {
 	        if (!$elem.parents('pre').length) $elem.html(utils.unIndent($elem.html()));
 	    },
 
+	    // if img is in a move it in front
+	    'a > img': ($elem) => $elem.parent().before($elem),
+
 	    // only allow text in anchors
 	    'a': ($elem) => $elem.html($elem.text())
 	},
@@ -141,6 +144,15 @@ module.exports = {
 
 		// ------
 		'hr': ($elem) => '\n\n___\n\n',
+
+		// table element
+		'td, th': ($elem) => {
+			let bold = $elem.get(0).tagName === 'th' ? '**' : '';
+			return utils.inline(bold + $elem.text().trim() + bold, $elem);
+		},
+
+		// table row breaks line
+		'tr': ($elem) => $elem.text() + '\n',
 
 		// div begins a new line
 		'div': ($elem) => '\n' + $elem.text(),

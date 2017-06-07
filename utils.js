@@ -7,7 +7,7 @@ module.exports = {
 	 * @return {string}   escaped html
 	 */
 	escapeMD: (s) => {
-		let escapeable = ['*', '#', '`', '_', '-', '[', ']', '(', ')'];
+		let escapeable = ['*', '#', '`', '_', '-', '+', '[', ']', '(', ')'];
 		for (let char of escapeable) {
 			s = s.replace(new RegExp('\\' + char, 'g'), '\\' + char);
 		}
