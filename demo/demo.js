@@ -30,7 +30,7 @@ let demo = async () => {
 			fs.writeFileSync(filename, md);
 
 		} catch (e) {
-			console.error(e.message);
+			console.error(e);
 		}
 
 	}
