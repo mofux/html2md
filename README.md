@@ -44,6 +44,6 @@ console.log(myMarkdown); // # Hello World
 
 ## Demo
 
-1. Clone this repository and move into the `folder`. 
+1. Clone this repository and move into the `demo` folder. 
 2. Add your own sites to `sites.json`.
-2. Run `node demo.js` and watch the outputed files.
+2. Run `node demo.js` and watch the outputed files under demo `demo/output` folder.
