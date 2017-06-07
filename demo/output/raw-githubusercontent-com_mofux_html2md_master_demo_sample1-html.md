@@ -17,7 +17,7 @@ ___
 
 EinsZweiDreiTest 1.1Test 1.2Test 1.3Test 2.1Test 2.2Test 2.3
 
-Hier ist einiger `'Text'` mit einem inline `![](test "") Code` Bild: ![Test](https://kreativkonzentrat.de/bilder/kk_dropper_uploads/logo-standalone.png "Test")
+Hier ist einiger `'Text'` mit einem inline ` ![](test "")  Code` Bild: ![Test](https://kreativkonzentrat.de/bilder/kk_dropper_uploads/logo-standalone.png "Test") 
 
 ```
 <style>
