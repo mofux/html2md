@@ -21,7 +21,24 @@ module.exports = ($) => {
 		prepare: {
 
 		    // remove things we cannot parse anyways
-		    'script, style, link, meta, iframe': ($elem) => $elem.remove(),
+		    'canvas, video, label, head, svg, fieldset, form, noscript, input, button, script, style, link, meta, iframe': ($elem) => $elem.remove(),
+
+		    // calculate newlines based on the order of items
+			'*': ($elem) => {
+				let elem = $elem.get(0);
+				let parent = $elem.parent().get(0);
+				let siblings = parent ? parent.children : [];
+				let isLast = false;
+
+				if (siblings[siblings.length-1] === elem) {
+					isLast = true;
+				}
+
+				// elem is block and elem is not last child of block parent
+				if (utils.blockElems.includes(elem.tagName) && utils.blockElems.includes(parent.tagName) && !isLast) {
+					$elem.attr('newline-bottom', true);
+				}
+			},
 
 		    // prepare code so that is not affected by our operations
 		    'pre code': ($elem) => $elem.html(utils.unIndent($elem.html())),
@@ -48,10 +65,10 @@ module.exports = ($) => {
 		transforms: {
 
 			// **bold**
-			'strong, b': ($elem) => utils.space(!utils.empty($elem) ? '**' + $elem.text() + '**' : '', $elem),
+			'strong, b': ($elem) => utils.empty($elem) ? utils.space($elem.text(), $elem) : utils.space(utils.moveSpacesOut('**' + $elem.text() + '**', '**'), $elem),
 
 			// *italic*
-			'i': ($elem) => utils.space(!utils.empty($elem) ? '*' + $elem.text() + '*' : '', $elem),
+			'i': ($elem) => utils.empty($elem) ? utils.space($elem.text(), $elem) : utils.space(utils.moveSpacesOut('*' + $elem.text() + '*', '*'), $elem),
 
 			// line break
 			'br': ($elem) => '\n',
@@ -81,6 +98,13 @@ module.exports = ($) => {
 				}
 
 				return utils.space(md, $elem);
+			},
+
+			'ul, ol': ($elem) => {
+				// remove double linebreaks
+				let md = $elem.text();
+				md = '\n\n' + md.replace(/$(\n){2,999}/gm, '\n').trim() + '\n\n';
+				return md;
 			},
 
 			// pre blocks
@@ -113,7 +137,7 @@ module.exports = ($) => {
 				let title = $elem.attr('title');
 				let alt = $elem.attr('alt') || title || '';
 				if (!src) return '';
-				return utils.space('![' + alt + '](' + src + ' "' + (title ? title : alt) + '")' + utils.attrMD($elem), $elem);
+				return utils.space(' ![' + alt + '](' + src + ' "' + (title ? title : alt) + '")' + utils.attrMD($elem)  + ' ', $elem);
 			},
 
 			// > quote
@@ -136,7 +160,7 @@ module.exports = ($) => {
 				for (i=0; i<level; i++) {
 					md += '#';
 				}
-				md = utils.space('\n' + md + ' ' + $elem.text().replace(/\n/g, ' ') + utils.attrMD($elem, true) + '\n', $elem);
+				md = '\n\n' + md + ' ' + $elem.text().replace(/\n/g, ' ') + utils.attrMD($elem, true) + '\n\n';
 				return md;
 			},
 
@@ -147,6 +171,10 @@ module.exports = ($) => {
 			'td, th': ($elem) => {
 				let bold = $elem.get(0).tagName === 'th' ? '**' : '';
 				return utils.space(' ' + bold + $elem.text() + bold + ' ', $elem);
+			},
+
+			'tr': ($elem) => {
+				return  utils.space($elem.text() + '\n', $elem);
 			},
 
 			// everything not handled before

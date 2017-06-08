@@ -1,9 +1,21 @@
 module.exports = ($) => {
 
-	let blockElems = ['div', 'section', 'p', 'header', 'footer', 'aside', 'ul', 'ol', 'table', 'tr', 'li', 'blockquote', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'pre'];
-	let inlineElems = ['span', 'b', 'strong', 'i', 's', 'a', 'td', 'th', 'img', 'code'];
+	let utils = {
 
-	return {
+		/**
+		 * elements that are treated as 'block' 
+		 * and therefore get a margin
+		 * @type {Array}
+		 */
+		blockElems: ['main', 'article', 'figure', 'figcaption', 'cite', 'nav', 'dd', 'form', 'div', 'section', 'p', 'header', 'footer', 'aside', 'ul', 'ol', 'table', 'tr', 'table', 'li', 'blockquote', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'pre'],
+
+		/**
+		 * elements that are treated as 'inline' and 
+		 * therefore get no margin in the final document
+		 * @type {Array}
+		 */
+		inlineElems: ['em', 'abbr', 'small', 'span', 'b', 'strong', 'i', 's', 'a', 'td', 'th', 'img', 'code', 'sup'],
+
 		/**
 		 * escapes special characters, used in markdown for serveral
 		 * things, shuch as list beginngings (*, -) or headings (#)
@@ -147,40 +159,45 @@ module.exports = ($) => {
 		 * Spaces an DOM element
 		 */
 		space: (text, $elem) => {
-			let elem = $elem.get(0);
-			let $parent = $elem.parent();
-			let parent = $elem.parent().get(0);
-			let children = parent.children;
 			let result = text;
+			if ($elem.attr('newline-top')) { 
+				result = '\n\n' + result;
+			}
 
-			let elemType = blockElems.includes(elem.tagName) ? 'block' : inlineElems.includes(elem.tagName) ? 'inline' : false;
-			let parentType = !parent ? null : blockElems.includes(parent.tagName) ? 'block' : inlineElems.includes(parent.tagName) ? 'inline' : false;
-
-			for (let idx in children) {
-				let child = children[idx];
-
-				// is this us?
-				if (child === $elem.get(0)) {
-					let prev = idx > 0 ? children[idx-1] : null;
-					let next = idx < children.length-1 ? children[idx+1] : null;
-					let prevType = !prev ? null : prev.type === 'text' ? 'inline' : blockElems.includes(prev.tagName) ? 'block' : inlineElems.includes(prev.tagName) ? 'inline' : false;
-					let nextType = !next ? null : next.type === 'text' ? 'inline' : blockElems.includes(next.tagName) ? 'block' : inlineElems.includes(next.tagName) ? 'inline' : false;
-
-					console.log(prevType, '+', '*' + elemType, elem.tagName);
-
-					// prev + *block
-					if (elemType === 'block') {
-						result = (['ul', 'ol', 'li'].includes(elem.tagName) ? '' : '\n') + result + '\n';
-					}
-
-					// break loop, we have found what we wanted
-					break;
-				}
+			if ($elem.attr('newline-bottom')) { 
+				result = result + '\n\n';
 			}
 
 			return result;
+		},
+
+		/**
+		 * Transforms `** text **` to ` **text** ` 
+		 */
+		moveSpacesOut: (text, seperator) => {
+			let spaceStart = '';
+			let spaceEnd = '';
+
+			let inner = text.substring(seperator.length);
+
+			if (inner.charAt(0) === ' ') {
+				spaceStart = ' ';
+			}
+
+			inner = inner.split("").reverse().join("");
+			inner = inner.substring(seperator.length);
+
+			if (inner.charAt(0) === ' ') {
+				spaceEnd = ' ';
+			}
+
+			inner = inner.split("").reverse().join("");
+
+			return spaceStart + seperator + inner.trim() + seperator + spaceEnd;
 		}
 
 	}
 
+	// export
+	return utils;
 }
