@@ -1,6 +1,5 @@
 module.exports = [
 	'https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet',
-	'https://raw.githubusercontent.com/mofux/html2md/master/demo/sample1.html',
 	'https://github.com/mofux/html2md',
 	'http://waedow.com',
 	'https://en.wikipedia.org/wiki/Michael_Schumacher',

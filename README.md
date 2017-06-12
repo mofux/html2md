@@ -23,6 +23,7 @@ Not everything has a coverage yet, but most things work quite well:
 [x] Lists (ordered, unordered)
 [x] Strong text
 [x] Italic text
+[x] Strikethrough text
 [x] Headings
 [x] Horizontal line
 [x] Paragraphs

@@ -1,6 +1,6 @@
 {
   "name": "html2md",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Generates Markdown from HTML",
   "main": "index.js",
   "scripts": {
