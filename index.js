@@ -1,7 +1,5 @@
 const cheerio = require('cheerio');
 const minify = require('html-minifier').minify;
-const utils = require('./utils.js');
-let { prepare, transforms } = require('./rules.js');
 
 /**
  * html2md function
@@ -16,6 +14,27 @@ let html2md = function(html, options) {
 
 	// build up the dom with cheerio
 	const $ = cheerio.load(html, { decodeEntities: true });
+
+	// require with current cheerio dependency
+	let utils = require('./utils.js')($);
+	let { prepare, transforms } = require('./rules.js')($);
+
+	// make manupulation from the outside possible
+	if (options) {
+
+		if (typeof (options.utils) === 'function') {
+			utils = options.utils(utils);
+		}
+
+		if (typeof (options.prepare) === 'function') {
+			prepare = options.prepare(prepare);
+		}
+
+		if (typeof (options.transforms) === 'function') {
+			transforms = options.transforms(transforms);
+		}
+
+	}
 
 	// select all elements inside the body and reverse
 	// them in thier order. This nifty trick will give
