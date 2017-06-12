@@ -17,14 +17,26 @@ module.exports = ($) => {
 		inlineElems: ['em', 'abbr', 'small', 'span', 'b', 'strong', 'i', 's', 'a', 'td', 'th', 'img', 'code', 'sup'],
 
 		/**
+		 * Characters used in Markdown Syntax, that are 
+		 * being escaped when found in normal text content
+		 * @type {Array}
+		 */
+		escapeable: ['*', '#', '`', '_', '-', '+', '[', ']', '(', ')'],
+
+		/**
+		 * sentence endings
+		 * @type {Array}
+		 */
+		endings: ['.', ';', '!', '?', ')'],
+
+		/**
 		 * escapes special characters, used in markdown for serveral
 		 * things, shuch as list beginngings (*, -) or headings (#)
 		 * @param  {string} s html string to escape
 		 * @return {string}   escaped html
 		 */
 		escapeMD: (s) => {
-			let escapeable = ['*', '#', '`', '_', '-', '+', '[', ']', '(', ')'];
-			for (let char of escapeable) {
+			for (let char of utils.escapeable) {
 				s = s.replace(new RegExp('\\' + char, 'g'), '\\' + char);
 			}
 			return s;
@@ -160,6 +172,8 @@ module.exports = ($) => {
 		 */
 		space: (text, $elem) => {
 			let result = text;
+			let elem = $elem.get(0);
+
 			if ($elem.attr('newline-top')) { 
 				result = '\n\n' + result;
 			}
@@ -194,8 +208,31 @@ module.exports = ($) => {
 			inner = inner.split("").reverse().join("");
 
 			return spaceStart + seperator + inner.trim() + seperator + spaceEnd;
-		}
+		},
 
+		getNeighbours: ($elem) => {
+			let node = $(elem).get(0);
+			let parent = $elem.parent().get(0);
+			if (!parent) return { prev: null, next: null };
+
+			let siblings = $(node).parent().get(0).children;
+			let prev = null;
+			let next = null;
+
+			for (let i=0; i<siblings.length; i++) {
+				let sibling = siblings[i];
+
+				// is this us?
+				if (sibling === node) {
+					if (i > 0) prev = siblings[i-1];
+					if (i < siblings.length-1) next = siblings[i+1];
+					console.log('prev, next', prev, next);
+					return { prev: prev, next: next };
+				}
+			}
+
+			return { prev: prev, next: next };
+		}
 	}
 
 	// export

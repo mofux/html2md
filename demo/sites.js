@@ -1,5 +1,5 @@
 module.exports = [
-	'http://www.gamestar.de/artikel/for-honor-95-prozent-der-urspruenglichen-community-mittlerweile-abgesprungen,3315200.html',
+	'https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet',
 	'https://raw.githubusercontent.com/mofux/html2md/master/demo/sample1.html',
 	'https://github.com/mofux/html2md',
 	'http://waedow.com',

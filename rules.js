@@ -47,7 +47,7 @@ module.exports = ($) => {
 		    },
 
 		    // if img is in a move it in front
-		    'a > img': ($elem) => $elem.parent().before($elem),
+		    //'a > img': ($elem) => $elem.parent().before($elem),
 
 		    // only allow text in anchors
 		    'a': ($elem) => $elem.html($elem.text())
@@ -68,7 +68,10 @@ module.exports = ($) => {
 			'strong, b': ($elem) => utils.empty($elem) ? utils.space($elem.text(), $elem) : utils.space(utils.moveSpacesOut('**' + $elem.text() + '**', '**'), $elem),
 
 			// *italic*
-			'i': ($elem) => utils.empty($elem) ? utils.space($elem.text(), $elem) : utils.space(utils.moveSpacesOut('*' + $elem.text() + '*', '*'), $elem),
+			'em, i': ($elem) => utils.empty($elem) ? utils.space($elem.text(), $elem) : utils.space(utils.moveSpacesOut('*' + $elem.text() + '*', '*'), $elem),
+
+			// ~~strikethrough~~
+			's, del': ($elem) => utils.empty($elem) ? utils.space($elem.text(), $elem) : utils.space(utils.moveSpacesOut('~~' + $elem.text() + '~~', '~~'), $elem),
 
 			// line break
 			'br': ($elem) => '\n',
