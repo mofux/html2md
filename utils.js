@@ -84,8 +84,8 @@ module.exports = ($) => {
 					.replace(/</g, '##$LT$##')
 					.replace(/\'/g, '##$APOS$##')
 					.replace(/\ /g, '##$SPACE$##')
-					.replace(/\t /g, '##$TAB$##')
-					.replace(/\n /g, '##$NEWLINE$##')
+					.replace(/\t/g, '##$TAB$##')
+					.replace(/\n/g, '##$NEWLINE$##')
 					.replace(/>/g, '##$GT$##');
 			return res;
 		},
@@ -107,6 +107,43 @@ module.exports = ($) => {
 			return res;
 		},
 
+
+		/**
+		 * encodes html characters and makes them safe
+		 * to not be modified through other modifications
+		 * such as whitespace or linebreak removals
+		 * @param  {string} s html to encode
+		 * @return {string}   encoded html
+		 */
+		lockHTML: (s) => { 
+			let res = s.replace(/&/g, '##$LOCK_AMP$##')
+					.replace(/"/g, '##$LOCK_QUOT$##')
+					.replace(/</g, '##$LOCK_LT$##')
+					.replace(/\'/g, '##$LOCK_APOS$##')
+					.replace(/\ /g, '##$LOCK_SPACE$##')
+					.replace(/\t/g, '##$LOCK_TAB$##')
+					.replace(/\n/g, '##$LOCK_NEWLINE$##')
+					.replace(/>/g, '##$LOCK_GT$##');
+			return res;
+		},
+
+		/**
+		 * decodes html characters encoded by @encodeHTML
+		 * @param  {string} s encoded html
+		 * @return {string}   decoded html
+		 */	
+		unlockHTML: (s) => {
+			let res = s.replace(/\#\#\$LOCK_AMP\$\#\#/g, '&')
+					.replace(/\#\#\$LOCK_QUOT\$\#\#/g, '"')
+					.replace(/\#\#\$LOCK_SPACE\$\#\#/g, ' ')
+					.replace(/\#\#\$LOCK_APOS\$\#\#/g, '\'')
+					.replace(/\#\#\$LOCK_TAB\$\#\#/g, '\t')
+					.replace(/\#\#\$LOCK_NEWLINE\$\#\#/g, '\n')
+					.replace(/\#\#\$LOCK_LT\$\#\#/g, '<')
+					.replace(/\#\#\$LOCK_GT\$\#\#/g, '>');
+			return res;
+		},
+		
 		/**
 		 * tries to find common spacing at the beginning
 		 * of all lines and removes it, therefore removing
@@ -115,7 +152,7 @@ module.exports = ($) => {
 		 * @return {string} unindented text
 		 */
 		unIndent: (text) => {
-			let lines = text.split('\n');
+			let lines = utils.unlockHTML(text).split('\n');
 			let commonSpacing = 9999;
 			let res = [];
 
@@ -131,7 +168,7 @@ module.exports = ($) => {
 				res.push(line.substring(commonSpacing));
 			}
 
-			return res.join('\n');
+			return utils.lockHTML(res.join('\n'));
 		},
 
 		/**
@@ -204,7 +241,7 @@ module.exports = ($) => {
 			let spaceStart = '';
 			let spaceEnd = '';
 
-			let inner = text.substring(seperator.length);
+			let inner = utils.decodeHTML(text.substring(seperator.length));
 
 			if (inner.charAt(0) === ' ') {
 				spaceStart = ' ';
@@ -219,7 +256,7 @@ module.exports = ($) => {
 
 			inner = inner.split("").reverse().join("");
 
-			return spaceStart + seperator + inner.trim() + seperator + spaceEnd;
+			return utils.encodeHTML(spaceStart + seperator + inner.trim() + seperator + spaceEnd);
 		},
 
 		getNeighbours: ($elem) => {

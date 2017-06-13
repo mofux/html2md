@@ -13,7 +13,7 @@ let html2md = function(html, options) {
 	html = minify(html, {collapseWhitespace: true});
 
 	// build up the dom with cheerio
-	const $ = cheerio.load(html, { decodeEntities: true });
+	const $ = cheerio.load(html, { decodeEntities: false });
 
 	// require with current cheerio dependency
 	let utils = require('./utils.js')($);
@@ -52,7 +52,15 @@ let html2md = function(html, options) {
 		if (el.children.length && !$el.is('code') && !$el.is('pre') && !$(el).parents('code, pre').length) {
 			for (let child of el.children) {
 				if (child.type === 'text') { 
-					child.data = utils.escapeMD(child.data);
+					child.data = utils.encodeHTML(utils.escapeMD(child.data));
+				}
+			}
+		}
+		// lock code, pre
+		else if ($el.is('code') || $el.is('pre') && !$el.find('code').length) {
+			for (let child of el.children) {
+				if (child.type === 'text') { 
+					child.data = utils.lockHTML(child.data);
 				}
 			}
 		}
@@ -97,18 +105,23 @@ let html2md = function(html, options) {
 		$el.replaceWith(res);
 	}
 
+
 	// get the final transformed text
 	let output = $('body').text();
+
+	// decode encoded letters back
+	output = utils.decodeHTML(output);
 
 	// remove leading spaces in line
 	output = output.replace(/^\ +/gm, '');
 	// only allow a maximum of two linebreaks after each other
-	output = output.replace(/$(\n){2,999}/gm, '\n\n').trim();
+	output = output.replace(/$(\s{0,}\n){2,}/gm, '\n\n').trim();
 	// allow only one space seperator
 	output = output.replace(/(\ ){2,9999}/gm, ' ');
-	// decode encoded letters back
-	output = utils.decodeHTML(output);
-	
+
+	// unlock HTML
+	output = utils.unlockHTML(output);
+
 	return output;
 };
 
