@@ -27,11 +27,11 @@ let html2md = function(html, options) {
 		}
 
 		if (typeof (options.prepare) === 'function') {
-			prepare = options.prepare(prepare);
+			prepare = options.prepare(prepare, utils);
 		}
 
 		if (typeof (options.transforms) === 'function') {
-			transforms = options.transforms(transforms);
+			transforms = options.transforms(transforms, utils);
 		}
 
 	}

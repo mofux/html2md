@@ -10,7 +10,7 @@ Each DOM-Node replaces itself with the transformed output text. The end result i
 
 ## Why yet another lib?
 
-I was trying serveral other libs before and none was a perfect fit. Often they didn't escape correctly, so that a `<div># Hallo Welt</div>` would result in `# Hello World` as Markdown, which is not correct. Also, some libs did not work in newer NodeJS versions.
+I was trying serveral other libs before and none was a perfect fit. Often they didn't escape correctly, so that a `<div># Hello World</div>` would result in `# Hello World` as Markdown, which is not correct. Also, some libs did not work in newer NodeJS versions.
 
 ## Feature support
 
@@ -37,10 +37,7 @@ Not everything has a coverage yet, but most things work quite well:
 
 ```js
 const html2md = require('html2md');
-
-let myMarkdown = html2md('<h1>Hello World</h1>');
-
-console.log(myMarkdown); // # Hello World
+console.log(html2md('<h1>Hello World</h1>')); // # Hello World
 ```
 
 ## Demo

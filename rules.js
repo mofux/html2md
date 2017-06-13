@@ -50,7 +50,7 @@ module.exports = ($) => {
 		    //'a > img': ($elem) => $elem.parent().before($elem),
 
 		    // only allow text in anchors
-		    'a': ($elem) => $elem.html($elem.text())
+		    //'a': ($elem) => $elem.html($elem.text())
 
 		},
 
@@ -126,7 +126,7 @@ module.exports = ($) => {
 			'a': ($elem) => {
 				let link = $elem.attr('href');
 				let title = $elem.attr('title');
-				let text = $elem.text();
+				let text = utils.oneLiner($elem.text());
 				if (!link || !text) return text;
 				text = text.trim();
 				link = link.trim();

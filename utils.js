@@ -43,6 +43,18 @@ module.exports = ($) => {
 		},
 
 		/**
+		 * Removes markdown escaping
+		 * @param  {string} s
+		 * @return {string} unescaped markdown
+		 */
+		unescapeMD: (s) => {
+			for (let char of utils.escapeable) {
+				s = s.replace(new RegExp('\\\\\\' + char, 'g'), char);
+			}
+			return s;
+		},
+
+		/**
 		 * Removes html escaping
 		 * this is especially usefull for transforming escaped
 		 * code blocks back into thier original form
