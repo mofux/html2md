@@ -667,9 +667,10 @@ let sample4 = `
 `;
 
 let sample5 = `
-<div>- test 1</div>
-<div>- test2</div>
-<div>- test 3</div>
+<div>1. test 1</div>
+<div>Mehr Droppers</div>
+<div>2. test2</div>
+<div>Noch mehr Droppers</div>
 `;
 
 /*

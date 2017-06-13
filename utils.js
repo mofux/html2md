@@ -21,7 +21,7 @@ module.exports = ($) => {
 		 * being escaped when found in normal text content
 		 * @type {Array}
 		 */
-		escapeable: ['*', '#', '`', '_', '-', '+', '[', ']', '(', ')'],
+		escapeable: ['.', '*', '#', '`', '_', '-', '+', '[', ']', '(', ')'],
 
 		/**
 		 * sentence endings
