@@ -143,7 +143,7 @@ module.exports = ($) => {
 					.replace(/\#\#\$LOCK_GT\$\#\#/g, '>');
 			return res;
 		},
-		
+
 		/**
 		 * tries to find common spacing at the beginning
 		 * of all lines and removes it, therefore removing

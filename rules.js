@@ -35,7 +35,7 @@ module.exports = ($) => {
 				}
 
 				// elem is block and elem is not last child of block parent
-				if (utils.blockElems.includes(elem.tagName) && utils.blockElems.includes(parent.tagName) && !isLast) {
+				if (utils.blockElems.includes(elem.tagName) && !isLast) {
 					$elem.attr('newline-bottom', true);
 				}
 			},
@@ -103,7 +103,7 @@ module.exports = ($) => {
 				// check how deep we are nested and offset
 				let indent = $elem.parents('ul, ol').length;
 				for (i=0; i<(indent-1)*3; i++) {
-					md = utils.encodeHTML(' ') + md;
+					md = utils.lockHTML(' ') + md;
 				}
 
 				return utils.space(md, $elem);
@@ -150,7 +150,7 @@ module.exports = ($) => {
 			},
 
 			// > quote
-			'blockquote': ($elem) => {
+			'blockquote, quote': ($elem) => {
 				if (utils.empty($elem)) return '';
 				let md = '';
 				let text = $elem.text().trim();
