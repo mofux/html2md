@@ -40,6 +40,12 @@ module.exports = ($) => {
 				}
 			},
 
+			// unwrap unsupported elements inside anchors
+			'a h1, a h2, a h3, a h4, a h5, a h6, a li, a ul': ($elem) => {
+				$elem.after('<span>' + $elem.text() + '</span>');
+				$elem.remove();
+			},
+
 		    // prepare code so that is not affected by our operations
 		    'pre code': ($elem) => $elem.html(utils.unIndent($elem.html())),
 		    'code': ($elem) => {
