@@ -16,22 +16,22 @@ I was trying serveral other libs before and none was a perfect fit. Often they d
 
 Not everything has a coverage yet, but most things work quite well:
 
-Support     | Feature
-:---------: | -------
-✓           | Line Breaks
-✓           | Images
-✓           | Anchors
-✓           | Lists (ordered, unordered)
-✓           | Strong text
-✓           | Italic text
-✓           | Strikethrough text
-✓           | Headings
-✓           | Horizontal line
-✓           | Paragraphs
-✓           | Inline Code
-✓           | Code Blocks
-✓           | Blockquotes
-✓           | Tables (Markdown Extra Feature)
+Support     | Feature                                   | Notes
+:---------: | ----------------------------------------- | :---------------------
+✓           | Line Breaks                               | 
+✓           | Images                                    | 
+✓           | Anchors                                   | 
+✓           | Lists (ordered, unordered)                | 
+✓           | Strong text                               | 
+✓           | Italic text                               | 
+✓           | Strikethrough text                        | 
+✓           | Headings                                  | 
+✓           | Horizontal line                           | 
+✓           | Paragraphs                                | 
+✓           | Inline Code                               | 
+✓           | Code Blocks                               | 
+✓           | Blockquotes                               | 
+✓           | Tables (Markdown Extra Feature)           | `colspan` is buggy. `rowspan` is unsupported.
 
 ## Usage
 
