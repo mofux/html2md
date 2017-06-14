@@ -1,3 +1,4 @@
+const path = require('path');
 const fs = require('fs');
 const request = require('request');
 const sites = require('./sites.js');
@@ -27,7 +28,7 @@ let demo = async () => {
 
 			let filename = 'output/' + site.replace('http://', '').replace('https://', '').replace(/\./g, '-').replace(/\//g, '_') + '.md';
 			console.log(`writing to "${filename}"`);
-			fs.writeFileSync(filename, md);
+			fs.writeFileSync(path.join(__dirname, filename), md);
 
 		} catch (e) {
 			console.error(e);
