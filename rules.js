@@ -139,7 +139,7 @@ module.exports = ($) => {
 				if (!link || !text) return text;
 				text = text.trim();
 				link = link.trim();
-				title = title ? title.trim() : '';
+				title = title ? utils.oneLiner(title.trim()) : '';
 				return utils.space('[' + text + '](' + link + ' "' + title + '")' + utils.attrMD($elem), $elem);
 			},
 
