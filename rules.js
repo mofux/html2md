@@ -182,8 +182,7 @@ module.exports = ($) => {
 			// table element
 			'td, th': ($elem) => {
 				let colspan = +$elem.attr('colspan') || 1;
-				let bold = $elem.is('th') ? '**' : '';
-				let res = ' | ' + bold + utils.oneLiner($elem.text()) + bold + ($elem.attr('last-child') ? ' | ' : ' ');
+				let res = ' | ' + utils.oneLiner($elem.text()) + ($elem.attr('last-child') ? ' | ' : ' ');
 
 				// fill up with empty rows, when we have a colspan detected
 				for (let span=0; span<colspan-1; span++) {
