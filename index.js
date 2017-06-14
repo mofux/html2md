@@ -10,7 +10,7 @@ const minify = require('html-minifier').minify;
 let html2md = function(html, options) {
 
 	// minify the html code, so that we have a common starting ground
-	html = minify(html, {collapseWhitespace: true});
+	html = minify(html, {collapseWhitespace: true });
 
 	// build up the dom with cheerio
 	const $ = cheerio.load(html, { decodeEntities: false });

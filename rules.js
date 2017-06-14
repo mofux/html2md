@@ -20,23 +20,32 @@ module.exports = ($) => {
 		 */
 		prepare: {
 
-		    // remove things we cannot parse anyways
-		    'canvas, video, label, head, svg, fieldset, form, noscript, input, button, script, style, link, meta, iframe': ($elem) => $elem.remove(),
+			// remove things we cannot parse anyways
+			'canvas, video, label, head, svg, fieldset, form, noscript, input, button, script, style, link, meta, iframe': ($elem) => $elem.remove(),
 
-		    // calculate newlines based on the order of items
+			// add some attributes to all elements
 			'*': ($elem) => {
-				let elem = $elem.get(0);
-				let parent = $elem.parent().get(0);
-				let siblings = parent ? parent.children : [];
-				let isLast = false;
 
-				if (siblings[siblings.length-1] === elem) {
-					isLast = true;
-				}
+				let neighbours = utils.getNeighbours($elem);
+				if (!neighbours.prev) $elem.attr('first-child', true);
+				if (!neighbours.next) $elem.attr('last-child', true);
+				if (utils.isBlock($elem)) $elem.attr('is-block', true);
+				if (utils.isInline($elem)) $elem.attr('is-inline', true);
+				$elem.attr('child-count', $elem.children().length);
+				$elem.attr('index', $elem.index());
 
 				// elem is block and elem is not last child of block parent
-				if (utils.blockElems.includes(elem.tagName) && !isLast) {
-					$elem.attr('newline-bottom', true);
+				if (utils.isBlock($elem)) {
+
+					// if we have a neighbour add a newline to the bottom
+					if (neighbours.next) {
+						$elem.attr('newline-bottom', true);
+					}
+
+					// if we follow on an inline element or text part, add a new line at the top
+					if (neighbours.prev && (neighbours.prev.type === 'text' || !utils.isBlock($(neighbours.prev)))) {
+						$elem.attr('newline-top', true);
+					}
 				}
 			},
 
@@ -46,17 +55,11 @@ module.exports = ($) => {
 				$elem.remove();
 			},
 
-		    // prepare code so that is not affected by our operations
-		    'pre code': ($elem) => $elem.html(utils.unIndent($elem.html())),
-		    'code': ($elem) => {
-		        if (!$elem.parents('pre').length) $elem.html(utils.unIndent($elem.html()));
-		    },
-
-		    // if img is in a move it in front
-		    //'a > img': ($elem) => $elem.parent().before($elem),
-
-		    // only allow text in anchors
-		    //'a': ($elem) => $elem.html($elem.text())
+			// prepare code so that is not affected by our operations
+			'pre code': ($elem) => $elem.html(utils.unIndent($elem.html())),
+			'code': ($elem) => {
+				if (!$elem.parents('pre').length) $elem.html(utils.unIndent($elem.html()));
+			}
 
 		},
 
@@ -178,12 +181,31 @@ module.exports = ($) => {
 
 			// table element
 			'td, th': ($elem) => {
-				let bold = $elem.get(0).tagName === 'th' ? '**' : '';
-				return utils.space(' ' + bold + $elem.text() + bold + ' ', $elem);
+				let colspan = +$elem.attr('colspan') || 1;
+				let bold = $elem.is('th') ? '**' : '';
+				let res = ' | ' + bold + utils.oneLiner($elem.text()) + bold + ($elem.attr('last-child') ? ' | ' : ' ');
+
+				// fill up with empty rows, when we have a colspan detected
+				for (let span=0; span<colspan-1; span++) {
+					res += ' | ';
+				}
+
+				return res;
 			},
 
 			'tr': ($elem) => {
-				return  utils.space($elem.text() + '\n', $elem);
+				let isHeadRow = false;
+				if ($elem.parent('thead').length) {
+					isHeadRow = true;
+				} else if (!$elem.closest('table').find('thead').length && $elem.attr('first-child')) {
+					isHeadRow = true;
+				}
+
+				if (isHeadRow) {
+					return utils.oneLiner($elem.text()) + '\n' + '|---------|' + '\n';
+				} else {
+					return utils.oneLiner($elem.text()) + '\n';
+				}
 			},
 
 			// everything not handled before

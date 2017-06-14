@@ -7,7 +7,7 @@ module.exports = ($) => {
 		 * and therefore get a margin
 		 * @type {Array}
 		 */
-		blockElems: ['main', 'article', 'figure', 'figcaption', 'cite', 'nav', 'dd', 'form', 'div', 'section', 'p', 'header', 'footer', 'aside', 'ul', 'ol', 'table', 'tr', 'table', 'li', 'blockquote', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'pre'],
+		blockElems: ['main', 'article', 'figure', 'figcaption', 'caption', 'cite', 'nav', 'dd', 'form', 'div', 'section', 'p', 'header', 'footer', 'aside', 'ul', 'ol', 'table', 'tr', 'li', 'blockquote', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'pre'],
 
 		/**
 		 * elements that are treated as 'inline' and 
@@ -28,6 +28,26 @@ module.exports = ($) => {
 		 * @type {Array}
 		 */
 		endings: ['.', ';', '!', '?', ')'],
+
+		/**
+		 * Checks if this element is a block element
+		 * @param  {Object} $elem Cheerio Node
+		 * @return {boolean}
+		 */
+		isBlock: ($elem) => {
+			if (!$elem || !$elem.length) return false;
+			return utils.blockElems.includes($elem.get(0).tagName);
+		},
+
+		/**
+		 * Checks if this element is an inline element
+		 * @param  {Object} $elem Cheerio Node
+		 * @return {boolean}
+		 */
+		isInline: ($elem) => {
+			if (!$elem || !$elem.length) return false;
+			return utils.inlineElems.includes($elem.get(0).tagName);
+		},
 
 		/**
 		 * escapes special characters, used in markdown for serveral
@@ -212,6 +232,11 @@ module.exports = ($) => {
 			return false;
 		},
 
+		/**
+		 * Removes linebreaks from the given text
+		 * @param  {string} text
+		 * @return {string}
+		 */
 		oneLiner: (text) => {
 			return text.replace(/$\n+/gm, '');
 		},
@@ -259,8 +284,13 @@ module.exports = ($) => {
 			return utils.encodeHTML(spaceStart + seperator + inner.trim() + seperator + spaceEnd);
 		},
 
+		/**
+		 * Gets previous and next nodes of the given element
+		 * @param  {Object} $elem A cheerio wrapped DOM Node
+		 * @return {Object}       { prev: <DOM Node>, next: <DOM Node> }
+		 */
 		getNeighbours: ($elem) => {
-			let node = $(elem).get(0);
+			let node = $elem.get(0);
 			let parent = $elem.parent().get(0);
 			if (!parent) return { prev: null, next: null };
 
@@ -275,7 +305,6 @@ module.exports = ($) => {
 				if (sibling === node) {
 					if (i > 0) prev = siblings[i-1];
 					if (i < siblings.length-1) next = siblings[i+1];
-					console.log('prev, next', prev, next);
 					return { prev: prev, next: next };
 				}
 			}

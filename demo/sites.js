@@ -7,5 +7,6 @@ module.exports = [
 	'https://theringer.com/ios-11-updates-apple-wwdc-8dea8548cb71',
 	'https://github.com/mscdex/ssh2/blob/master/README.md',
 	'https://kreativkonzentrat.de/Barcode-Custom-Drop',
-	'https://kreativkonzentrat.de/Drop-a-Day-2016-Recap'
+	'https://kreativkonzentrat.de/Drop-a-Day-2016-Recap',
+	'https://kreativkonzentrat.de/Dropper'
 ];
