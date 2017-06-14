@@ -74,13 +74,13 @@ module.exports = ($) => {
 		transforms: {
 
 			// **bold**
-			'strong, b': ($elem) => utils.empty($elem) ? utils.space($elem.text(), $elem) : utils.space(utils.moveSpacesOut('**' + $elem.text() + '**', '**'), $elem),
+			'strong, b': ($elem) => utils.empty($elem) ? utils.space($elem.text(), $elem) : utils.space(utils.moveSpacesOut('**' + utils.oneLiner($elem.text()) + '**', '**'), $elem),
 
 			// *italic*
-			'em, i': ($elem) => utils.empty($elem) ? utils.space($elem.text(), $elem) : utils.space(utils.moveSpacesOut('*' + $elem.text() + '*', '*'), $elem),
+			'em, i': ($elem) => utils.empty($elem) ? utils.space($elem.text(), $elem) : utils.space(utils.moveSpacesOut('*' + utils.oneLiner($elem.text()) + '*', '*'), $elem),
 
 			// ~~strikethrough~~
-			's, del': ($elem) => utils.empty($elem) ? utils.space($elem.text(), $elem) : utils.space(utils.moveSpacesOut('~~' + $elem.text() + '~~', '~~'), $elem),
+			's, del': ($elem) => utils.empty($elem) ? utils.space($elem.text(), $elem) : utils.space(utils.moveSpacesOut('~~' + utils.oneLiner($elem.text()) + '~~', '~~'), $elem),
 
 			// line break
 			'br': ($elem) => '\n',
