@@ -238,7 +238,7 @@ module.exports = ($) => {
 		 * @return {string}
 		 */
 		oneLiner: (text) => {
-			return text.replace(/$\n+/gm, '');
+			return text.replace(/$\n+/gm, ' ');
 		},
 
 		/**
