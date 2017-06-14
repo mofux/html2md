@@ -50,7 +50,7 @@ module.exports = ($) => {
 			},
 
 			// unwrap unsupported elements inside anchors
-			'a h1, a h2, a h3, a h4, a h5, a h6, a li, a ul': ($elem) => {
+			'a h1, a h2, a h3, a h4, a h5, a h6, a li, a ul, li h1, li h2, li h3, li h4, li h5, li h6': ($elem) => {
 				$elem.after('<span>' + $elem.text() + '</span>');
 				$elem.remove();
 			},
