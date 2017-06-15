@@ -44,6 +44,21 @@ let html2md = function(html, options) {
 	// This way we are able to transform from inside out
 	let elems = $('body *').toArray().reverse();
 
+	// we want to move spaces out of our elements, so that they belong only to textnodes afterwards.
+	// this will make the conversion handling much easier as we won't have to deal with cases like
+	// [ asdfasdf]("test") or **some bold text **
+	for (let el of elems) {
+		let $el = $(el);
+
+		// move spaces out
+		if (['strong', 'b', 'span', 'a', 'i', 'em', 's', 'del'].includes(el.tagName) && !$el.parents('pre, code').length) { 
+			utils.transposeSpaces($el);
+			// remove if empty afterwards
+			if ($el.html() === '') $el.remove();
+		}
+	}
+
+
 	// we have to escape some special characters inside
 	// our dom that might otherwise conflict with special
 	// meaning characters used in markdown, such as *, -, etc.
@@ -52,7 +67,7 @@ let html2md = function(html, options) {
 		if (el.children.length && !$el.is('code') && !$el.is('pre') && !$(el).parents('code, pre').length) {
 			for (let child of el.children) {
 				if (child.type === 'text') { 
-					child.data = utils.encodeHTML(utils.escapeMD(utils.normalizeTextNode(child.data)));
+					child.data = utils.encodeHTML(utils.escapeMD(child.data));
 				}
 			}
 		}

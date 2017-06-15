@@ -29,7 +29,18 @@ module.exports = ($) => {
 		 */
 		endings: ['.', ';', '!', '?', ')'],
 
-
+		transposeSpaces: ($elem) => {
+			let html = $elem.html();
+			if (html.startsWith(' ')) {
+				$elem.before(' ');
+				$elem.html(html.trim());
+			}
+			if (html.endsWith(' ')) {
+				$elem.after(' ');
+				$elem.html(html.trim());
+			}
+		},
+		
 		normalizeTextNode: (text) => {
 			return text.replace(/\n/gm, '').replace(/\t/gm, '').replace(/\ {2,}/gm, ' ');
 		},
