@@ -2,7 +2,7 @@
   "name": "html2md",
   "version": "1.0.8",
   "description": "Generates Markdown from HTML",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "mocha"
   },

@@ -1,4 +1,4 @@
-const html2md = require('../index.js');
+const html2md = require('../lib/index.js');
 
 let table = `
 <table class="infobox biography vcard" style="width:22em;width:24em">

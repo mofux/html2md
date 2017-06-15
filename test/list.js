@@ -1,6 +1,6 @@
 module.exports = function() {
 	const should = require('should');
-	const html2md = require('../index.js');
+	const html2md = require('../lib/index.js');
 
 	describe('simple unordered list', () => {
 
