@@ -29,6 +29,11 @@ module.exports = ($) => {
 		 */
 		endings: ['.', ';', '!', '?', ')'],
 
+
+		normalizeTextNode: (text) => {
+			return text.replace(/\n/gm, '').replace(/\t/gm, '').replace(/\ {2,}/gm, ' ');
+		},
+
 		/**
 		 * Checks if this element is a block element
 		 * @param  {Object} $elem Cheerio Node

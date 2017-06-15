@@ -52,7 +52,7 @@ let html2md = function(html, options) {
 		if (el.children.length && !$el.is('code') && !$el.is('pre') && !$(el).parents('code, pre').length) {
 			for (let child of el.children) {
 				if (child.type === 'text') { 
-					child.data = utils.encodeHTML(utils.escapeMD(child.data));
+					child.data = utils.encodeHTML(utils.escapeMD(utils.normalizeTextNode(child.data)));
 				}
 			}
 		}
