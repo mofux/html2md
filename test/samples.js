@@ -50,7 +50,7 @@ let parseCases = (text) => {
 }
 
 let parseInOut = (text) => {
-	let inout = {};
+	let inout = { in: null, out: null };
 	let regex = /(^in:)([\s\S]+?)(^out:)([\s\S]+?)(?=^end:)/gm;
 	let matches = [];
 	let match = null;

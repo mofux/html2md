@@ -45,3 +45,24 @@ section "Distances":
 
 		Hallo
 		Welt
+
+	case "should produce new empty line above and below <hr>":
+
+		in:
+		before
+		<hr>after<hr/><span>Test</span><hr><p>Paragraph</p>
+
+		out:
+		before
+
+		___
+
+		after
+
+		___
+
+		Test
+
+		___
+
+		Paragraph
