@@ -1,0 +1,22 @@
+section "Escape":
+
+	case "Should escape Markdown special chars":
+
+		in:
+		<div>- Eins<br/>-Zwei<br/>-Drei</div>
+		<div># Hallo Welt</div>
+		out:
+		\- Eins
+		\-Zwei
+		\-Drei
+
+		\# Hallo Welt
+
+	case "Should only escape when needed":
+
+		in:
+		<div>- Eins - Zwei. 3.<br/>4.</div>
+
+		out:
+		\- Eins - Zwei. 3.
+		4\.
