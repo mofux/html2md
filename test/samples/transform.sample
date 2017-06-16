@@ -3,7 +3,6 @@ section "Transformations":
 	case "Should move spaces out":
 
 		in:
-
 		<div><strong> Hello  </strong><em>World </em><a href="test"> Check this </a>.
 
 		out:
