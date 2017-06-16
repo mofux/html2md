@@ -1,0 +1,60 @@
+section "Code":
+
+	case "should be trimmed":
+
+		in:
+		<pre>
+			<code>
+
+
+			console.log('hi');
+
+			</code>
+		</pre>
+
+		out:
+		```
+		console.log('hi');
+		```
+
+	case "should work with <pre> only":
+
+		in:
+		<pre>
+			&lt;ul&gt;
+				<span>&lt;li&gt; &lt;/li&gt;</span>
+				&lt;li&gt;Second&lt;/li&gt;
+				&lt;li&gt;Third&lt;/li&gt;
+			&lt;/ul&gt;
+		</pre>
+
+		out:
+		```
+		<ul>
+			<li> </li>
+			<li>Second</li>
+			<li>Third</li>
+		</ul>
+		```
+				
+	case "should keep indentation":
+
+		in:
+		<pre>
+			<code>
+				&lt;ul&gt;
+					<span>&lt;li&gt; &lt;/li&gt;</span>
+					&lt;li&gt;Second&lt;/li&gt;
+					&lt;li&gt;Third&lt;/li&gt;
+				&lt;/ul&gt;
+			</code>
+		</pre>
+
+		out:
+		```
+		<ul>
+			<li> </li>
+			<li>Second</li>
+			<li>Third</li>
+		</ul>
+		```
