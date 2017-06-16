@@ -1,5 +1,7 @@
 # HTML 2 Markdown
 
+[![Build Status](https://travis-ci.org/mofux/html2md.png?branch=master)](https://travis-ci.org/mofux/html2md)
+
 A simple NodeJS library to convert HTML to Markdown.
 
 ## How it works
