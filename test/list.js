@@ -174,11 +174,11 @@ module.exports = function() {
 			let result = html2md(sample, { utils: (utils) => { utils.escapeable.splice(utils.escapeable.indexOf('.'), 1); return utils; } });
 			result.should.equal(`
 - Test
-  Test Wrapped
-  Test 2
+Test Wrapped
+Test 2
    - Test
-     Test Wrapped
-     Test 2
+Test Wrapped
+Test 2
 			`.trim());
 		});
 	});
