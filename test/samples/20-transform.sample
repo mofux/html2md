@@ -6,4 +6,4 @@ section "Transformations":
 		<div><strong> Hello  </strong><em>World </em><a href="test"> Check this </a>.
 
 		out:
-		**Hello** *World* [Check this](test "") \.
+		**Hello** *World* [Check this](test "") .

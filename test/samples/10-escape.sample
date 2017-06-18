@@ -12,11 +12,36 @@ section "Escape":
 
 		\# Hallo Welt
 
-	case "Should only escape when needed":
+	case "Should escape '-' only at the beginning of a line":
 
 		in:
-		<div>- Eins - Zwei. 3.<br/>4.</div>
+		<div>- Eins - Zwei -<br/>4 -</div>
 
 		out:
-		\- Eins - Zwei. 3.
-		4\.
+		\- Eins - Zwei -
+		4 -
+
+	case "Should escape '+' only at the beginning of a line":
+
+		in:
+		<div>+ Eins + Zwei +<br/>4 +</div>
+
+		out:
+		\+ Eins + Zwei +
+		4 +
+
+	case "Should escape '.' only at the beginning of a line when followed on a number":
+
+		in:
+		<div>1. Erstens<br>Zweitens 2.</div>
+
+		out:
+		1\. Erstens
+		Zweitens 2.
+
+	case "Should escpape '#' only at the beginning of a line":
+
+		in:
+		<div># Hallo # Welt</div>
+		out:
+		\# Hallo # Welt
