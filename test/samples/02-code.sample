@@ -1,6 +1,7 @@
 section "Code":
 
 	case "should produce inline code":
+
 		in:
 		<div>Hallo <code>console.log("Hello World")</code> Welt</div>
 
@@ -8,6 +9,7 @@ section "Code":
 		Hallo `console.log("Hello World")` Welt
 
 	case "should trim inline code":
+
 		in:
 		<div>Hallo <code>   console.log("Hello 
 		World")	</code> 

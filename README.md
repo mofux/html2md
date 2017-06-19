@@ -46,4 +46,6 @@ console.log(html2md('<h1>Hello World</h1>')); // # Hello World
 
 1. Clone this repository and move into the `demo` folder. 
 2. Add your own sites to `sites.json`.
-2. Run `node demo.js` and watch the outputed files under demo `demo/output` folder.
+2. Run `node demo.js` and watch the newly written files under demo `demo/output` folder.
+
+You might also want to have a look into the `*.sample` files within the `test/samples` folder of this repository.
