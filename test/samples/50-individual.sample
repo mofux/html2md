@@ -3,10 +3,10 @@ section "Individual Tests":
 	case "&lt;TEXT&gt; should not be interpreted as HTML element":
 
 		in:
-		&lt;less&gt; more
+		&lt;less&gt; is &lt;more&gt;
 
 		out:
-		<less> more
+		<less> is <more>
 
 	case "email reply":
 

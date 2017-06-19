@@ -3,45 +3,53 @@ section "Escape":
 	case "Should escape Markdown special chars":
 
 		in:
-		<div>- Eins<br/>-Zwei<br/>-Drei</div>
-		<div># Hallo Welt</div>
+		<div>- One<br/>-Two<br/>-Three</div>
+		<div># Hello World</div>
 		out:
-		\- Eins
-		\-Zwei
-		\-Drei
+		\- One
+		\-Two
+		\-Three
 
-		\# Hallo Welt
+		\# Hello World
 
 	case "Should escape '-' only at the beginning of a line":
 
 		in:
-		<div>- Eins - Zwei -<br/>4 -</div>
+		<div>- One - Two -<br/>4 -</div>
 
 		out:
-		\- Eins - Zwei -
+		\- One - Two -
 		4 -
 
 	case "Should escape '+' only at the beginning of a line":
 
 		in:
-		<div>+ Eins + Zwei +<br/>4 +</div>
+		<div>+ One + Two +<br/>4 +</div>
 
 		out:
-		\+ Eins + Zwei +
+		\+ One + Two +
 		4 +
 
 	case "Should escape '.' only at the beginning of a line when followed on a number":
 
 		in:
-		<div>1. Erstens<br>Zweitens 2.</div>
+		<div>1. First<br>Second 2.</div>
 
 		out:
-		1\. Erstens
-		Zweitens 2.
+		1\. First
+		Second 2.
 
 	case "Should escpape '#' only at the beginning of a line":
 
 		in:
-		<div># Hallo # Welt</div>
+		<div># Hello # World</div>
 		out:
-		\# Hallo # Welt
+		\# Hello # World
+
+	case "Should escape '>' only at the beginning of a line":
+
+		in:
+		<p>&gt; Hello World &gt;</p>
+
+		out:
+		\> Hello World >

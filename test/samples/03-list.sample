@@ -49,6 +49,67 @@ section "List":
 		      - Two Oh Two Oh Two
 		- Three
 
+
+	case "simple ordered list":
+
+		in:
+		<ol>
+			<li>One</li>
+			<li>Two</li>
+			<li>Three</li>
+		</ol>
+
+		out:
+		1. One
+		2. Two
+		3. Three
+
+	case "nested ordered list":
+		in:
+		<ol>
+			<li>One</li>
+			<li>Two
+				<ol>
+					<li>One</li>
+					<li>Two</li>
+					<li>Three</li>
+				</ol>
+			</li>
+			<li>Three</li>
+		</ol>
+
+		out:
+		1. One
+		2. Two
+		   1. One
+		   2. Two
+		   3. Three
+		3. Three
+
+	case "ordered in unordered list":
+
+		in:
+		<ul>
+			<li>One</li>
+			<li>Two
+
+				<ol>
+					<li>One</li>
+					<li>Two</li>
+					<li>Three</li>
+				</ol>
+			</li>
+			<li>Three</li>
+
+		out:
+
+		- One
+		- Two
+		   1. One
+		   2. Two
+		   3. Three
+		- Three
+
 	case "should not break on complex DOM":
 
 		in:
@@ -76,41 +137,3 @@ section "List":
 		   - Test
 		Test Wrapped
 		Test 2
-
-	case "simple ordered list":
-
-		in:
-		<ol>
-			<li>One</li>
-			<li>Two</li>
-			<li>Three</li>
-		</ol>
-
-		out:
-		1. One
-		2. Two
-		3. Three
-
-	case "ordered in unordered list":
-
-		in:
-		<ul>
-			<li>One</li>
-			<li>Two
-
-				<ol>
-					<li>One</li>
-					<li>Two</li>
-					<li>Three</li>
-				</ol>
-			</li>
-			<li>Three</li>
-
-		out:
-
-		- One
-		- Two
-		   1. One
-		   2. Two
-		   3. Three
-		- Three
