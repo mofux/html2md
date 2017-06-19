@@ -45,11 +45,3 @@ section "escaping":
 		<div># Hello # World</div>
 		out:
 		\# Hello # World
-
-	case "should escape '>' only at the beginning of a line":
-
-		in:
-		<p>&gt; Hello World &gt;</p>
-
-		out:
-		\> Hello World >
