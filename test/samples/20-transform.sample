@@ -1,9 +1,9 @@
-section "Transformations":
+section "transformations":
 
-	case "Should move spaces out":
+	case "should move spaces out of elements":
 
 		in:
-		<div><strong> Hello  </strong><em>World </em><a href="test"> Check this </a>.
+		<strong> Hello  </strong><em>World </em><a href="test"> Check this </a>.
 
 		out:
 		**Hello** *World* [Check this](test "") .

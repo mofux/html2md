@@ -1,4 +1,4 @@
-section "Individual Tests":
+section "other tests":
 
 	case "&lt;node&gt; should not be interpreted as HTML element":
 

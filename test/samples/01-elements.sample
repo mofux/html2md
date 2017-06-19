@@ -1,4 +1,4 @@
-section "Elements (Basic Tests)":
+section "elements (basic tests)":
 
 	case "<strong>":
 		in:

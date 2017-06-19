@@ -1,4 +1,4 @@
-section "List":
+section "<ul>, <ol>":
 
 	case "simple unordered list":
 
@@ -137,3 +137,11 @@ section "List":
 		   - Test
 		Test Wrapped
 		Test 2
+
+	case "ungrouped li should still produce a list item":
+
+		in:
+		<li>one</li>
+
+		out:
+		- one

@@ -1,6 +1,6 @@
-section "Escape":
+section "escaping":
 
-	case "Should escape Markdown special chars":
+	case "should escape Markdown special chars":
 
 		in:
 		<div>- One<br/>-Two<br/>-Three</div>
@@ -12,7 +12,7 @@ section "Escape":
 
 		\# Hello World
 
-	case "Should escape '-' only at the beginning of a line":
+	case "should escape '-' only at the beginning of a line":
 
 		in:
 		<div>- One - Two -<br/>4 -</div>
@@ -21,7 +21,7 @@ section "Escape":
 		\- One - Two -
 		4 -
 
-	case "Should escape '+' only at the beginning of a line":
+	case "should escape '+' only at the beginning of a line":
 
 		in:
 		<div>+ One + Two +<br/>4 +</div>
@@ -30,7 +30,7 @@ section "Escape":
 		\+ One + Two +
 		4 +
 
-	case "Should escape '.' only at the beginning of a line when followed on a number":
+	case "should escape '.' only at the beginning of a line when followed on a number":
 
 		in:
 		<div>1. First<br>Second 2.</div>
@@ -39,14 +39,14 @@ section "Escape":
 		1\. First
 		Second 2.
 
-	case "Should escpape '#' only at the beginning of a line":
+	case "should escpape '#' only at the beginning of a line":
 
 		in:
 		<div># Hello # World</div>
 		out:
 		\# Hello # World
 
-	case "Should escape '>' only at the beginning of a line":
+	case "should escape '>' only at the beginning of a line":
 
 		in:
 		<p>&gt; Hello World &gt;</p>

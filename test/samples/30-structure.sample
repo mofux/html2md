@@ -1,4 +1,4 @@
-section "Distances":
+section "structure":
 
 	case "should produce empty line between two block elements":
 
@@ -66,3 +66,28 @@ section "Distances":
 		___
 
 		Paragraph
+
+	case "should produce a space between":
+
+		in:
+		<span>Hello</span> <span>World</span>
+
+		out:
+		Hello World
+
+	case "should product a space between (2)":
+
+		in:
+		<span>Hello</span>
+		<span>World</span>
+
+		out:
+		Hello World
+
+	case "should produce no space between":
+
+		in:
+		<span>Hello</span><span>World</span>
+
+		out:
+		HelloWorld

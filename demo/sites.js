@@ -13,5 +13,7 @@ module.exports = [
 	'https://www.golem.de/news/logitech-circle-2-im-hands-on-mehr-fischauge-ist-wachsamer-1706-128171.html',
 	'https://www.welt.de/wirtschaft/article165541912/Fuer-China-bricht-der-IWF-mit-seinem-Kodex.html',
 	'https://www.booleanworld.com/depth-guide-iptables-linux-firewall',
-	'https://lists.freedesktop.org/archives/wayland-devel/2017-June/034286.html'
+	'https://lists.freedesktop.org/archives/wayland-devel/2017-June/034286.html',
+	'https://nationalsecurityagency.github.io',
+	'https://www.amazon.com/Amazon-Echo-Dot-Portable-Bluetooth-Speaker-with-Alexa-Black/dp/B01DFKC2SO/ref=sr_1_1?ie=UTF8&qid=1497870651&sr=8-1&keywords=echo+dot'
 ];

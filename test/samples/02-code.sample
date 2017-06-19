@@ -1,4 +1,4 @@
-section "Code":
+section "<code>, <pre>":
 
 	case "should produce inline code":
 
