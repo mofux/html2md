@@ -17,5 +17,6 @@ module.exports = [
 	'https://nationalsecurityagency.github.io',
 	'https://www.apple.com/macbook-pro',
 	'http://jtldemo.kreativkonzentrat.de',
-	'https://nodejs.org/docs/latest-v5.x/api/child_process.html'
+	'https://nodejs.org/docs/latest-v5.x/api/child_process.html',
+	'https://themission.co/the-ultimate-6-000-word-guide-to-making-it-as-a-blogger-in-2017-81149c1c14cc'
 ];
