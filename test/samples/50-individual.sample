@@ -1,6 +1,6 @@
 section "Individual Tests":
 
-	case "&lt;TEXT&gt; should not be interpreted as HTML element":
+	case "&lt;node&gt; should not be interpreted as HTML element":
 
 		in:
 		&lt;less&gt; is &lt;more&gt;
@@ -15,3 +15,12 @@ section "Individual Tests":
 
 		out:
 		On Mo, Jun 19, 2017 at 10:43 , Dropper Support <TICKET-HOMK9@some.mail> wrote:
+
+	case "should not kill whitespace":
+
+		in:
+		<b>Some Person</b> 
+		<A HREF="test" TITLE="test">some.person at provider.net</A>
+
+		out:
+		**Some Person** [some.person at provider.net](test "test")

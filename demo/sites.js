@@ -11,5 +11,7 @@ module.exports = [
 	'https://kreativkonzentrat.de/Drop-a-Day-2016-Recap',
 	'http://blog.mailgun.com/open-sourcing-our-email-signature-parsing-library',
 	'https://www.golem.de/news/logitech-circle-2-im-hands-on-mehr-fischauge-ist-wachsamer-1706-128171.html',
-	'https://www.welt.de/wirtschaft/article165541912/Fuer-China-bricht-der-IWF-mit-seinem-Kodex.html'
+	'https://www.welt.de/wirtschaft/article165541912/Fuer-China-bricht-der-IWF-mit-seinem-Kodex.html',
+	'https://www.booleanworld.com/depth-guide-iptables-linux-firewall',
+	'https://lists.freedesktop.org/archives/wayland-devel/2017-June/034286.html'
 ];
