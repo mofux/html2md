@@ -179,6 +179,27 @@ section "Elements (Basic Tests)":
 		<code>Hello World</code>
 		```
 
+	case "<blockquote>":
+
+		in:
+		<blockquote>
+			<p>Hello <strong>World</strong>.</p>
+			<p>Hello <em>John</em>.</p>
+			<blockquote>
+			nested
+			</blockquote>
+			<p>End.</p>
+		</blockquote>
+
+		out:
+		> Hello **World**.
+		> 
+		> Hello *John*.
+		> 
+		> > nested
+		> 
+		> End.
+
 	case "<h1>":
 
 		in:
