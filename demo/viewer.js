@@ -56,7 +56,6 @@ let demo = async () => {
 				if (src.trim() && !src.startsWith('http://') && !src.startsWith('https://') && !src.startsWith('//')) {
 					if (src.startsWith('/')) src = src.substring(1);
 					$elem.attr('src', baseUrl + (baseUrl.endsWith('/') || src.startsWith('/') ? '' : '/') + src);
-					console.log($elem.attr('src'));
 				}
 			});
 
@@ -66,7 +65,10 @@ let demo = async () => {
 			let md = html2md(html);
 
 			let outHTML = `
+			<!DOCTYPE html>
 			<head>
+				<title>` + ($('title').text() || site) + `</title>
+				<meta charset="UTF-8">
 				<link rel="stylesheet" type="text/css" href="css/font.css">
 				<link rel="stylesheet" type="text/css" href="css/style.css">
 			</head>
