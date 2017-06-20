@@ -27,5 +27,10 @@ $(function () {
 		if (anchor.length && anchor.children().length === 1) {
 			anchor.addClass('img-link');
 		}
+
+		$('p img').each(function() {
+			if ($(this).parents('p').find('img').length === 1) $(this).addClass('img-left');
+		});
+
 	});
 });

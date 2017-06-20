@@ -19,6 +19,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
 	font-family: demo-content-sans-serif-font,"Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial,sans-serif;	
 	margin: 1.5em 0 .75em;
+	clear: both;
 }
 
 h1 {
@@ -78,7 +79,8 @@ p {
 	font-weight: 400;
 	font-size: 21px;
 	line-height: 1.58;
-	letter-spacing: -.003em;	
+	letter-spacing: -.003em;
+	clear: both;
 }
 
 img {
@@ -90,6 +92,11 @@ img {
 img.img-centered {
 	margin: 1em auto;
 	display: block;	
+}
+
+img.img-left:not(.img-centered) {
+	float: left;
+	margin: 0 1em 1em 0;
 }
 
 blockquote {
@@ -178,6 +185,7 @@ li:before {
 
 ul, ol {
     margin: 14px 0;
+    clear: both;
 }
 
 code {

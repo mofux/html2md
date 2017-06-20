@@ -21,5 +21,9 @@ module.exports = [
 	'http://jtldemo.kreativkonzentrat.de',
 	'https://nodejs.org/docs/latest-v5.x/api/child_process.html',
 	'https://themission.co/the-ultimate-6-000-word-guide-to-making-it-as-a-blogger-in-2017-81149c1c14cc',
-	'http://blog.3v1n0.net/informatica/linux/gnome-fractional-and-multi-monitor-scaling-hackfest-the-report'
+	'http://blog.3v1n0.net/informatica/linux/gnome-fractional-and-multi-monitor-scaling-hackfest-the-report',
+	'https://wptavern.com/wordcamp-europe-2017-draws-1900-attendees-from-79-countries',
+	'http://0pointer.net/blog/casync-a-tool-for-distributing-file-system-images.html',
+	'http://www.lieberbiber.de/2017/06/20/my-ubuntu-for-mobile-devices-post-mortem',
+	'http://www.auto-motor-und-sport.de/formel-1/mclaren-beobachter-bei-jedem-pirelli-reifen-test-12166565.html'
 ];
