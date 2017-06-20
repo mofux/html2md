@@ -16,6 +16,8 @@ module.exports = [
 	'https://lists.freedesktop.org/archives/wayland-devel/2017-June/034286.html',
 	'https://nationalsecurityagency.github.io',
 	'https://www.apple.com/macbook-pro',
+	'https://medium.com/elementaryos/elementary-github-bbd454eac547',
+	'https://journal.thriveglobal.com/how-to-better-manage-your-energy-time-and-attention-for-peak-performance-22b20b96ebc7',
 	'http://jtldemo.kreativkonzentrat.de',
 	'https://nodejs.org/docs/latest-v5.x/api/child_process.html',
 	'https://themission.co/the-ultimate-6-000-word-guide-to-making-it-as-a-blogger-in-2017-81149c1c14cc'
