@@ -217,6 +217,10 @@ pre code {
 	background: none;
 }
 
+table {
+	margin-bottom: 30px;
+}
+
 th, td {
 	padding: 0.35em 0.75em;
 	font-family: demo-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
