@@ -189,9 +189,49 @@ pre {
 
 pre code {
 	background: none;
-	font-size: 1em;
+	font-size: 15px;
 	margin: 0;
 	padding: 0;
+	line-height: 1.5;
+}
+
+.hljs {
+	background: none;
+}
+
+th, td {
+	padding: 0.35em 1em;
+	font-family: demo-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 21px;
+	line-height: 1.25;
+	letter-spacing: -.003em;	
+	text-align: left;
+	border-right: 1px solid rgba(0,0,0,.8);
+	border-bottom: 1px solid rgba(0,0,0,.8);
+	min-width: 120px;
+}
+
+th:first-child, td:first-child {
+	padding-left: 0;
+}
+
+th:last-child, td:last-child {
+	padding-right: 0;
+	border-right: 0 none;
+}
+
+
+thead th {
+	font-family: demo-content-sans-serif-font,"Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial,sans-serif;
+	font-weight: 600;
+	padding: 0 1em 0.5em 1em;
+	letter-spacing: -0.015em;
+}
+
+tbody tr:last-child td {
+	border-bottom: 0 none;
 }
 
 .content {

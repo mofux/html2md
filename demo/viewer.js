@@ -69,8 +69,12 @@ let demo = async () => {
 			<head>
 				<title>` + ($('title').text() || site) + `</title>
 				<meta charset="UTF-8">
+				<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
 				<link rel="stylesheet" type="text/css" href="css/font.css">
 				<link rel="stylesheet" type="text/css" href="css/style.css">
+				<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+				<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+				<script src="js/page.js"></script>
 			</head>
 			<body>
 				<div class="content">

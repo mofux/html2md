@@ -14,7 +14,7 @@ section "other tests":
 		<div>On Mo, Jun 19, 2017 at 10:43 , Dropper Support &lt;TICKET-HOMK9@some.mail&gt; wrote:</div>
 
 		out:
-		On Mo, Jun 19, 2017 at 10:43 , Dropper Support \<TICKET-HOMK9@some.mail\> wrote:
+		On Mo, Jun 19, 2017 at 10:43 , Dropper Support &lt;TICKET-HOMK9@some.mail&gt; wrote:
 
 	case "should not kill whitespace":
 

@@ -76,3 +76,56 @@ section "<code>, <pre>":
 			<li>Third</li>
 		</ul>
 		```
+
+	case "should detect language":
+
+		in:
+		<pre class="js">
+			<code>
+			console.log('hello world');
+			</code>
+		</pre>
+
+		out:
+		```js
+		console.log('hello world');
+		```
+
+	case "should detect language (2)":
+
+		in:
+		<pre>
+			<code class="js">
+			console.log('hello world');
+			</code>
+		</pre>
+
+		out:
+		```js
+		console.log('hello world');
+		```
+
+	case "should detect language (3)":
+
+		in:
+		<pre class="highlight-source-php">
+		console.log('hello world');
+		</pre>
+
+		out:
+		```php
+		console.log('hello world');
+		```
+
+	case "should detect language (4)":
+
+		in:
+		<div class="highlight-source-php">
+			<pre>
+			console.log('hello world');
+			</pre>
+		</div>
+		out:
+		```php
+		console.log('hello world');
+		```
