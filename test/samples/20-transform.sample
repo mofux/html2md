@@ -7,3 +7,17 @@ section "transformations":
 
 		out:
 		**Hello** *World* [Check this](test "") .
+
+	case "should transform nested strong in em":
+		in:
+		<em><strong>actors</strong> at the maximum </em>
+
+		out:
+		***actors*** *at the maximum* 
+
+	case "should transform nested em in strong":
+		in:
+		<strong><em>a special </em>strong</strong>
+
+		out:
+		***a special*** **strong**

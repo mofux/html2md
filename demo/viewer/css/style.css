@@ -84,7 +84,12 @@ p {
 img {
 	width: auto;
 	height: auto;
-	max-width: 100%
+	max-width: 100%;
+}
+
+img.img-centered {
+	margin: 1em auto;
+	display: block;	
 }
 
 blockquote {
@@ -116,6 +121,11 @@ a {
 	background-repeat: repeat-x;
 	background-size: 2px .1em;
 	background-position: 0 1.07em;	
+}
+
+a.img-link {
+	background-image: none;
+	line-height: 0;
 }
 
 hr {
@@ -200,7 +210,7 @@ pre code {
 }
 
 th, td {
-	padding: 0.35em 1em;
+	padding: 0.35em 0.75em;
 	font-family: demo-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
 	font-weight: 400;
 	font-style: normal;
@@ -208,30 +218,15 @@ th, td {
 	line-height: 1.25;
 	letter-spacing: -.003em;	
 	text-align: left;
-	border-right: 1px solid rgba(0,0,0,.8);
-	border-bottom: 1px solid rgba(0,0,0,.8);
+	border: 1px solid rgba(0,0,0,.05);
 	min-width: 120px;
 }
-
-th:first-child, td:first-child {
-	padding-left: 0;
-}
-
-th:last-child, td:last-child {
-	padding-right: 0;
-	border-right: 0 none;
-}
-
 
 thead th {
 	font-family: demo-content-sans-serif-font,"Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Arial,sans-serif;
 	font-weight: 600;
-	padding: 0 1em 0.5em 1em;
 	letter-spacing: -0.015em;
-}
-
-tbody tr:last-child td {
-	border-bottom: 0 none;
+	background: rgba(0,0,0,.05);
 }
 
 .content {

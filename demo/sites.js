@@ -20,5 +20,6 @@ module.exports = [
 	'https://journal.thriveglobal.com/how-to-better-manage-your-energy-time-and-attention-for-peak-performance-22b20b96ebc7',
 	'http://jtldemo.kreativkonzentrat.de',
 	'https://nodejs.org/docs/latest-v5.x/api/child_process.html',
-	'https://themission.co/the-ultimate-6-000-word-guide-to-making-it-as-a-blogger-in-2017-81149c1c14cc'
+	'https://themission.co/the-ultimate-6-000-word-guide-to-making-it-as-a-blogger-in-2017-81149c1c14cc',
+	'http://blog.3v1n0.net/informatica/linux/gnome-fractional-and-multi-monitor-scaling-hackfest-the-report'
 ];

@@ -64,6 +64,11 @@ let demo = async () => {
 			console.log(`converting "${site}"`);
 			let md = html2md(html);
 
+			// lets start at the first h1
+			let idx = md.lastIndexOf('\n# ');
+			if (idx < 0) idx = md.indexOf('\n## ');
+			if (idx > 0) md = md.substring(idx);
+
 			let outHTML = 
 `<!DOCTYPE html>
 <head>
@@ -72,14 +77,11 @@ let demo = async () => {
 	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
 	<link rel="stylesheet" type="text/css" href="css/font.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 	<script src="js/page.js"></script>
 </head>
 <body>
-	<script type="text/markdown">`
-		+ md +
-	`</script>
 	<div class="content">
 	` + marked(md) + `	
 	</div>
