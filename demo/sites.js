@@ -25,5 +25,6 @@ module.exports = [
 	'https://wptavern.com/wordcamp-europe-2017-draws-1900-attendees-from-79-countries',
 	'http://0pointer.net/blog/casync-a-tool-for-distributing-file-system-images.html',
 	'http://www.lieberbiber.de/2017/06/20/my-ubuntu-for-mobile-devices-post-mortem',
-	'http://www.auto-motor-und-sport.de/formel-1/mclaren-beobachter-bei-jedem-pirelli-reifen-test-12166565.html'
+	'http://www.auto-motor-und-sport.de/formel-1/mclaren-beobachter-bei-jedem-pirelli-reifen-test-12166565.html',
+	'http://perfectionkills.com/experimenting-with-html-minifier'
 ];
