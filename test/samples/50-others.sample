@@ -24,3 +24,11 @@ section "other tests":
 
 		out:
 		**Some Person** [some.person at provider.net](test "test")
+
+	case "should keep image url intact":
+
+		in:
+		<img src="cid:ED0395D3-E05F-42A6-B31A-6881C3F33198@fritz.box" alt="" style="max-width: 100%;">
+
+		out:
+		![](cid:ED0395D3-E05F-42A6-B31A-6881C3F33198@fritz.box "")

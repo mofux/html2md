@@ -73,6 +73,14 @@ h6 {
 	font-size: 20px;
 }
 
+h1+h2 {
+	font-size: 1.5em;
+	margin-top: -0.5em;
+	font-weight: 500;
+	opacity: 0.7;
+	letter-spacing: -0.01em;
+}
+
 p {
 	font-family: demo-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
 	letter-spacing: .01rem;
@@ -163,7 +171,7 @@ li {
 	font-family: demo-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
 	letter-spacing: .01rem;
 	font-weight: 400;
-	font-style: normal;
+	font-style: inherit;
 	font-size: 21px;
 	line-height: 1.58;
 	letter-spacing: -.003em;	
@@ -171,7 +179,7 @@ li {
 	margin-bottom: 14px;
 }
 
-li:before {
+ul li:before {
 	position: absolute;
 	display: inline-block;
 	box-sizing: border-box;
@@ -181,6 +189,10 @@ li:before {
 	padding-top: 4px;
 	padding-right: 15px;
 	content: '\2022';	
+}
+
+ol li {
+	list-style-type: decimal;	
 }
 
 ul, ol {
