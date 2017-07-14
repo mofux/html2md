@@ -42,6 +42,14 @@ const html2md = require('html2md');
 console.log(html2md('<h1>Hello World</h1>')); // # Hello World
 ```
 
+Some features of the converter might be disabled. Currently only `table` is supported to be disabled:
+
+```js
+html2md(html, { 
+	disable: ['table'] 
+});
+```
+
 ## Demo
 
 1. Clone this repository and move into the `demo` folder. 
