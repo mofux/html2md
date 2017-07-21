@@ -129,3 +129,15 @@ section "<code>, <pre>":
 		```php
 		console.log('hello world');
 		```
+
+	case "should do linebreaks with <br> correctly":
+		in:
+		<pre>&lt;ul class=”list”&gt;<br>  &lt;li&gt;item 1&lt;/li&gt;<br>  &lt;li&gt;item 2&lt;/li&gt;<br>&lt;/ul&gt;</pre>
+
+		out:
+		```
+		<ul class=”list”>
+		  <li>item 1</li>
+		  <li>item 2</li>
+		</ul>
+		```

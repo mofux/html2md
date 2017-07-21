@@ -1,4 +1,5 @@
 module.exports = [
+	'https://medium.com/@deathmood/how-to-write-your-own-virtual-dom-ee74acc13060',
 	'https://arstechnica.com/tech-policy/2017/07/global-web-standard-for-integrating-drm-into-browsers-hits-a-snag',
 	'https://www.kernel.org/doc/html/v4.10/process/coding-style.html',
 	'https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet',
